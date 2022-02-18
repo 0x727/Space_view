@@ -5,7 +5,7 @@
 
 郑重声明：文中所涉及的技术、思路和工具仅供以安全为目的的学习交流使用，任何人不得将其用于非法用途以及盈利等目的，否则后果自行承担。
 
-感谢[lhc0229](https://github.com/lhc0229)[倾旋](https://github.com/Rvn0xsy)和[alex9968](https://github.com/alex9968)的答疑解惑，以及lhc0229对这个项目前端的支持。
+感谢[lhc0229](https://github.com/lhc0229)、[倾旋](https://github.com/Rvn0xsy)和[alex9968](https://github.com/alex9968)的答疑解惑，以及lhc0229对这个项目前端的支持。
 
 [中文简体](./README_zh.md)
 
