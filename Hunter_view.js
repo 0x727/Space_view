@@ -149,7 +149,7 @@ body.appendChild(div)
     var HunterKey = GM_getValue("HunterKey");
     var url
     var search
-    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=20&is_web=3&start_time=\"" + getNewDate("before", 3) + "\" &end_time=\""+ getNewDate() +"\"&search="
+    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=20&is_web=3&start_time=\"" + getNewDate("before", 6) + "\" &end_time=\""+ getNewDate() +"\"&search="
     var target = window.location.hostname // 获取域名或者ip
     var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ //判断是否是ip还是domain
     var messaage = {}
@@ -194,6 +194,18 @@ body.appendChild(div)
             let port_innerHTML = `<div>端口</div>`
             let code_innerHTML = `<div>状态码</div>`
             let url_innerHTML = `<div>url</div>`
+
+            top_icon.onclick = ()=>{
+              content.style.display = 'none'
+              top_icon.style.display = 'none'
+              bottom_icon.style.display = 'block'
+          }
+
+            bottom_icon.onclick = ()=>{
+              content.style.display = 'block'
+              top_icon.style.display = 'block'
+              bottom_icon.style.display = 'none'
+          }
 
             const data = res.data || {}
 
@@ -245,17 +257,6 @@ body.appendChild(div)
             org.style.overflow = 'hidden'
             org.style.width = '350px'
 
-            top_icon.onclick = ()=>{
-                content.style.display = 'none'
-                top_icon.style.display = 'none'
-                bottom_icon.style.display = 'block'
-            }
-
-            bottom_icon.onclick = ()=>{
-                content.style.display = 'block'
-                top_icon.style.display = 'block'
-                bottom_icon.style.display = 'none'
-            }
         }
     });
 }
