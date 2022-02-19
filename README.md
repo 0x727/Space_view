@@ -66,6 +66,9 @@ https://greasyfork.org/zh-CN/scripts/440243-hunter-view
 
 1. 登录
 
+# !!!第一次用hunter api的同学 记得先重置（刷新）下自己的key 再去登录
+
+（很多朋友反映第一次使用key的话查不出数据，重置下key就好了  平台的问题）
 打开任意一个网站，点击登录
 ![](./doc/images/denglu.png)
 
