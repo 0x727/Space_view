@@ -70,11 +70,14 @@ https://greasyfork.org/zh-CN/scripts/440243-hunter-view
 
 （很多朋友反映第一次使用key的话查不出数据，重置下key就好了  平台的问题）
 打开任意一个网站，点击登录
+
 ![](./doc/images/denglu.png)
 
 输入Hunter平台的手机号和key值
+
 ![](./doc/images/shouji.png)
 ![](./doc/images/key.png)
+
 key值在hunter平台的个人中心有展示。
 
 登录一次之后即可 其他网站不需要重复登录。
@@ -82,15 +85,21 @@ key值在hunter平台的个人中心有展示。
 2. 使用演示
 
 第一次使用需要给权限，这里选总是允许。
+
 ![](./doc/images/yunxu.png)
+
 然后刷新网站，加载脚本
 
 之后点击 Hunter 识别结果
+
 ![](./doc/images/shibie.png)
+
 这个时候网站右上角会出现小按钮
+
 ![](./doc/images/anniu.png)
 
 点开按钮 展示数据
+
 ![](./doc/images/zhanshi.png)
 
 展示界面的url 可以直接点击会新建标签页跳转到指定链接。
@@ -99,6 +108,7 @@ key值在hunter平台的个人中心有展示。
 ## 注意事项
 默认收集的是前六个月的50条资产，（扣除的积分情况是根据查询的数据来定的，一般情况扣不了多少积分）
 每次使用消耗个位数的积分，当然有黑名单机制，你可以点击这里 这样就不会去查询这个网站，建议添加*.baidu.com 等等
+
 ![](./doc/images/paichu.png)
 
 
