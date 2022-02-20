@@ -149,7 +149,7 @@ body.appendChild(div)
     var HunterKey = GM_getValue("HunterKey");
     var url
     var search
-    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=20&is_web=3&start_time=\"" + getNewDate("before", 6) + "\" &end_time=\""+ getNewDate() +"\"&search="
+    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=50&is_web=3&start_time=\"" + getNewDate("before", 6) + "\" &end_time=\""+ getNewDate() +"\"&search="
     var target = window.location.hostname // 获取域名或者ip
     var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ //判断是否是ip还是domain
     var messaage = {}
