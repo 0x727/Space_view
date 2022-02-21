@@ -30,22 +30,34 @@ Space_view 是一款通过Hunter(鹰图平台)或者Fofa资产展示的浏览器
 
 Fofa和Hunter平台各具优势,通过这个油猴插件可以快速直观的了解网站的资产情况。
 
-资产的准确度：采用“==”精准匹配
+资产的准确度：
 
-资产的时效性：Hunter是搜索当前站点在平台上距离当前时间前6个月的资产情况(本来是三个月 但是为了数据的隐藏价值 所以改成6个月)，以及包括对闰年，某些月份是30天的判断。
+>采用“==”精准匹配
 
-            Fofa是默认搜索当前站点在平台上距离当前时间前一年的资产情况。
+资产的时效性：
 
-资产的直观性：title port 等等 包括去重 (Fofa由于平台本身api的问题 isp和org信息暂时无法查出 所以这块数据是空的)
+>Hunter是搜索当前站点在平台上距离当前时间前6个月的资产情况(本来是三个月 但是为了数据的隐藏价值 所以改成6个月)，以及包括对闰年，某些月份是30天的判断。
+
+>Fofa是默认搜索当前站点在平台上距离当前时间前一年的资产情况。
+
+资产的直观性：
+
+>title port 等等 包括去重 (Fofa由于平台本身api的问题 isp和org信息暂时无法查出 所以这块数据是空的)
 
 
-交互的友好型：想看的时候点击右上角就出现小模块，点击就展开显示数据详情，不看的时候就收回，Hunter固定在页面右上角，Fofa固定在页面左上角。
+交互的友好型：
 
-            url处可以点击直接新建标签页跳转。
+>想看的时候点击右上角就出现小模块，点击就展开显示数据详情，不看的时候就收回，Hunter固定在页面右上角，Fofa固定在页面左上角。
 
-查询的速度：通过api查询的速度远超某些浏览器插件的速度。
+>url处可以点击直接新建标签页跳转。
 
-安装的快捷：本项目已经公开分享到greasyfork,安装完油猴插件之后，直接搜索即可安装。
+查询的速度：
+
+>通过api查询的速度远超某些浏览器插件的速度。
+
+安装的快捷：
+
+>本项目已经公开分享到greasyfork,安装完油猴插件之后，直接搜索即可安装。
           可自动推送更新。
 
 
@@ -58,7 +70,9 @@ https://zhuanlan.zhihu.com/p/128453110
 
 
 ### 2. 获取脚本并安装
+
 方式一：可直接浏览器搜索然后点击安装即可
+
 Hunter安装：
 
 https://greasyfork.org/zh-CN/scripts/440243-hunter-view
@@ -70,6 +84,7 @@ https://greasyfork.org/zh-CN/scripts/440382-fofa-view
 ![](./doc/images/huoqu.png)
 
 方式二：你也可以在greasyfork搜索Hunter view或者FOFA view (如果搜索不到，点击显示所有语言的结果)
+
 然后直接安装
 
 安装完成之后记得在管理面板给它启用
@@ -80,6 +95,7 @@ https://greasyfork.org/zh-CN/scripts/440382-fofa-view
 1. 登录
 
 # !!!第一次用hunter api的同学 记得先重置（刷新）下自己的key 再去登录
+
 （很多朋友反映第一次使用hunter key的话查不出数据，重置下key就好了  平台的问题）
 
 (以下使用方法 FOFA view同理 不做赘述)
@@ -122,7 +138,9 @@ Hunter展示：
 Fofa展示
 
 ![](./doc/images/fofa.png)
+
 展示界面的url 可以直接点击会新建标签页跳转到指定链接。
+
 并且返回来的时候 标签不会收缩，方便继续阅读，想收缩的时候，点击收缩即可。
 
 
@@ -130,9 +148,10 @@ Fofa展示
 
 # 更新得强调下
 
-手动更新：Hunter view点击这个链接 会提示 https://greasyfork.org/zh-CN/scripts/440243-hunter-view 是否需要更新。
+手动更新：
+>Hunter view点击这个链接 会提示 https://greasyfork.org/zh-CN/scripts/440243-hunter-view 是否需要更新。
 
-        Fofa view点击这个链接 会提示 https://greasyfork.org/zh-CN/scripts/440382-fofa-view 是否需要更新。
+>Fofa view点击这个链接 会提示 https://greasyfork.org/zh-CN/scripts/440382-fofa-view 是否需要更新。
 
 
 自动更新（推荐）：打开油猴找管理面板 找到hunter_view(Fofa同理)
