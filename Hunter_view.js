@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hunter view
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.4.1
 // @description  Send the current website to Hunter
 // @author       0cat
 // @match        http://*/*
@@ -18,7 +18,7 @@ GM_registerMenuCommand ("Hunter Login",Login, "l");
 GM_registerMenuCommand ("Hunter 识别结果",HunterFind, "s");
 
 function Login(){
-    var username=prompt("Please enter Hunter Username","111")
+    var username=prompt("Please enter Hunter Username","")
     var HunterKey=prompt("Please enter Hunter Key","")
     if(HunterKey== null || HunterKey== "" || username== null || username== ""){
         alert("未登录")
@@ -87,7 +87,7 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
         <div style="color:rgb(24, 36, 127);cursor: pointer;margin-left: 8px;margin-top: 4px;font-size: 12px;margin-bottom: 4px;display: none" class="icon-xiajiantou">Hunter展开</div>
         <div style="cursor: pointer;font-size: 12px;margin-top: 2px;color:rgb(96, 98, 102);" class="icon-xiajiantou-copy">隐藏</div>
       </div>
-      <div class="plugs_content" style="padding-bottom: 20px;">
+      <div class="plugs_content" style="padding-bottom: 10px;">
         <div style="margin-left: 4px;border-radius: 2px;display: inline-block;padding: 8px;padding-right: 40px;">
           <div style="margin-bottom: 4px;display: flex">
             <div style="margin-right: 6px;white-space: nowrap">地区:</div>
@@ -113,6 +113,7 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
         <div style="display: flex;margin-top: 8px;border-top:1px solid #ebebeb;padding-top: 10px;width: 100%;">
 
         </div>
+        <ul class="demo1" style="width: 100%;max-height: 350px;max-width: 600px; overflow: auto;">
         <div style="display: flex;margin-top: 8px;">
           <div style="padding: 0 10px;">
             <div class="table_title">
@@ -137,11 +138,12 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
           <div style="padding: 0 10px;">
             <div class="table_url">
               <div>
-                <a href="" class="url1" style="color: #1890ff;text-decoration: none">xxxxx</a>
+                <a href="" class="url1" style="color: #1890ff;text-decoration: none">url</a>
               </div>
             </div>
           </div>
         </div>
+        </ul>
       </div>
     </div>`
 body.appendChild(div)
@@ -189,23 +191,11 @@ body.appendChild(div)
             const table_code = document.getElementsByClassName('table_code')[0]
             const table_url = document.getElementsByClassName('table_url')[0]
 
-            let title_innerHTML = `<div>标题</div>`
-            let protocol_innerHTML = `<div>协议</div>`
-            let port_innerHTML = `<div>端口</div>`
-            let code_innerHTML = `<div>状态码</div>`
-            let url_innerHTML = `<div>url</div>`
-
-            top_icon.onclick = ()=>{
-              content.style.display = 'none'
-              top_icon.style.display = 'none'
-              bottom_icon.style.display = 'block'
-          }
-
-            bottom_icon.onclick = ()=>{
-              content.style.display = 'block'
-              top_icon.style.display = 'block'
-              bottom_icon.style.display = 'none'
-          }
+            let title_innerHTML = `<div style='white-space: nowrap'>标题</div>`
+            let protocol_innerHTML = `<div style='white-space: nowrap'>协议</div>`
+            let port_innerHTML = `<div style='white-space: nowrap'>端口</div>`
+            let code_innerHTML = `<div style='white-space: nowrap'>状态码</div>`
+            let url_innerHTML = `<div style='white-space: nowrap'>url</div>`
 
             const data = res.data || {}
 
@@ -224,6 +214,18 @@ body.appendChild(div)
             table_code.innerHTML = code_innerHTML
             table_port.innerHTML = port_innerHTML
             table_url.innerHTML = url_innerHTML
+
+            top_icon.onclick = ()=>{
+              content.style.display = 'none'
+              top_icon.style.display = 'none'
+              bottom_icon.style.display = 'block'
+          }
+
+          bottom_icon.onclick = ()=>{
+              content.style.display = 'block'
+              top_icon.style.display = 'block'
+              bottom_icon.style.display = 'none'
+          }
 
             const target_location = target_data[0] || {}
 
