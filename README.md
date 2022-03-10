@@ -24,6 +24,8 @@
 
 Space_view 是一款通过Hunter(鹰图平台)或者Fofa资产展示的浏览器油猴插件脚本。
 
+建议fofa和hunter一起装，左fofa，右hunter！
+
 ## Why 【Space_view】 ?
 
 网络安全从业者需要对某一些授权的网站进行快速的资产了解。
