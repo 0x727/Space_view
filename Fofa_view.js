@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FOFA view
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Send the current website to FOFA
 // @author       0cat
 // @match        http://*/*
@@ -112,7 +112,7 @@ body.appendChild(div)
     }
     else
     {
-        search = btoa('domain=="'+target+'"')
+        search = btoa('host=="'+target+'"')
         url = Fofa_url+search
     }
     GM_xmlhttpRequest({
