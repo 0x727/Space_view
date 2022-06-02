@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FOFA view
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4.0
 // @description  Send the current website to FOFA
 // @author       0cat
 // @match        http://*/*
@@ -57,9 +57,9 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
             <div class="port_fofa">null</div>
           </div>
         </div>
-        <div style="display: flex;margin-top: 8px;border-top:1px solid #ebebeb;padding-top: 10px;width: 100%;">
-
-        </div>
+      <div class="copy-text-data" style="cursor: pointer;display: flex;margin-top: 8px;border-top:1px solid #ebebeb;justify-content: flex-end;padding-right: 4px;">
+            复制
+      </div>
         <ul class="demo1" style="width: 100%;max-height: 350px;max-width: 600px; overflow: auto;">
         <div style="display: flex;margin-top: 8px;">
           <div style="padding: 0 10px;">
@@ -125,6 +125,7 @@ body.appendChild(div)
             const top_icon = document.getElementsByClassName('icon-xiajiantou-copy-fofa')[0]
             const bottom_icon = document.getElementsByClassName('icon-xiajiantou-fofa')[0]
             const content = document.getElementsByClassName('plugs_content_fofa')[0]
+            const copy = document.getElementsByClassName('copy-text-data')[0]
 
             const area = document.getElementsByClassName('area_fofa')[0]
             const org = document.getElementsByClassName('org_fofa')[0]
@@ -178,6 +179,19 @@ body.appendChild(div)
             table_port.innerHTML = port_innerHTML
             table_server.innerHTML = server_innerHTML
             table_url.innerHTML = url_innerHTML
+
+            copy.onclick = ()=>{
+                const target = target_data.map((item)=>{
+                    const copy_target_data = item[6] + '  ' + item[7] + '  ' + item[8] + '  ' + item[10] + '  ' + item[9] + '\r\n'
+                    return copy_target_data
+                })
+                const input = document.createElement('textarea')
+                document.body.appendChild(input)
+                input.value = target.join('')
+                input.select()
+                document.execCommand("copy")
+                document.body.removeChild(textarea)
+          }
 
 
             const target_location = target_data[0] || {}
