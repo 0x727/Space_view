@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hunter view
 // @namespace    http://tampermonkey.net/
-// @version      0.4.1
+// @version      0.4.4
 // @description  Send the current website to Hunter
 // @author       0cat
 // @match        http://*/*
@@ -110,9 +110,9 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
             <div class="surplus">null</div>
           </div>
         </div>
-        <div style="display: flex;margin-top: 8px;border-top:1px solid #ebebeb;padding-top: 10px;width: 100%;">
-
-        </div>
+      <div class="copy-text-data" style="cursor: pointer;display: flex;margin-top: 8px;border-top:1px solid #ebebeb;justify-content: flex-end;padding-right: 4px;">
+            复制
+      </div>
         <ul class="demo1" style="width: 100%;max-height: 350px;max-width: 600px; overflow: auto;">
         <div style="display: flex;margin-top: 8px;">
           <div style="padding: 0 10px;">
@@ -178,6 +178,7 @@ body.appendChild(div)
             const top_icon = document.getElementsByClassName('icon-xiajiantou-copy')[0]
             const bottom_icon = document.getElementsByClassName('icon-xiajiantou')[0]
             const content = document.getElementsByClassName('plugs_content')[0]
+            const copy = document.getElementsByClassName('copy-text-data')[0]
 
             const area = document.getElementsByClassName('area')[0]
             const org = document.getElementsByClassName('org')[0]
@@ -221,11 +222,24 @@ body.appendChild(div)
               bottom_icon.style.display = 'block'
           }
 
-          bottom_icon.onclick = ()=>{
+            bottom_icon.onclick = ()=>{
               content.style.display = 'block'
               top_icon.style.display = 'block'
               bottom_icon.style.display = 'none'
           }
+            copy.onclick = ()=>{
+                const target = target_data.map((item)=>{
+                    const copy_target_data = item.web_title + '  ' + item.protocol + '  ' + item.port + '  ' + item.status_code + '  ' + item.url + '\r\n'
+                    return copy_target_data
+                })
+                const input = document.createElement('textarea')
+                document.body.appendChild(input)
+                input.value = target.join('')
+                input.select()
+                document.execCommand("copy")
+                document.body.removeChild(textarea)
+          }
+
 
             const target_location = target_data[0] || {}
 
