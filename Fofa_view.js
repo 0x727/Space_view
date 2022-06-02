@@ -100,7 +100,7 @@ body.appendChild(div)
     var search
     var Fofa_url = "https://fofa.info/api/v1/search/all?email="+ username + "&key=" + FofaKey + "&fields=country,province,city,isp,as_organization,ip,title,protocol,port,host,server&qbase64="
     var target = window.location.hostname // 获取域名或者ip
-    var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ //判断是否是ip还是domain
+    var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ 
     var messaage = {}
     messaage.type = 2
     messaage.message = target
