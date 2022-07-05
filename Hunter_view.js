@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hunter view
 // @namespace    http://tampermonkey.net/
-// @version      0.4.4
+// @version      0.4.5
 // @description  Send the current website to Hunter
 // @author       0cat
 // @match        http://*/*
@@ -75,6 +75,7 @@ function getNewDate(flag, many) {
     targetDate = targetDate.toString().padStart(2, '0')
     dealTargetDays = `${targetYear}-${targetMonth}-${targetDate}`
     dealDate = dealTargetDays+ " " + hh + ":" + mm + ":" + ss;
+    dealDate = escape(dealDate)
 
     return dealDate
 }
@@ -96,6 +97,10 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
           <div style="margin-bottom: 4px;display: flex">
             <div style="margin-right: 6px;white-space: nowrap">运营商和org:</div>
             <div class="org" style="word-wrap:break-word;word-break:normal;overflow: hidden;">null</div>
+          </div>
+          <div style="margin-bottom: 4px;display: flex">
+            <div style="margin-right: 6px;white-space: nowrap">ICP:</div>
+            <div class="icpnumber" style="word-wrap:break-word;word-break:normal;overflow: hidden;">null</div>
           </div>
           <div style="margin-bottom: 4px;display: flex">
             <div style="margin-right: 6px;white-space: nowrap">协议:</div>
@@ -151,7 +156,7 @@ body.appendChild(div)
     var HunterKey = GM_getValue("HunterKey");
     var url
     var search
-    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=50&is_web=3&start_time=\"" + getNewDate("before", 6) + "\" &end_time=\""+ getNewDate() +"\"&search="
+    var Hunter_url = "https://hunter.qianxin.com/openApi/search?username="+ username + "&api-key=" + HunterKey + "&page=1&page_size=50&is_web=3&start_time=" + getNewDate("before", 6) + "&end_time="+ getNewDate() + "&search="
     var target = window.location.hostname // 获取域名或者ip
     var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ //判断是否是ip还是domain
     var messaage = {}
@@ -185,6 +190,7 @@ body.appendChild(div)
             const protocol = document.getElementsByClassName('protocol')[0]
             const port = document.getElementsByClassName('port')[0]
             const surplus = document.getElementsByClassName('surplus')[0]
+            const icpnumber = document.getElementsByClassName('icpnumber')[0]
 
             const table_title = document.getElementsByClassName('table_title')[0]
             const table_protocol = document.getElementsByClassName('table_protocol')[0]
@@ -245,13 +251,17 @@ body.appendChild(div)
 
             area.textContent = [target_location.country || '',target_location.province || '',target_location.city || ''].filter(item=>item).join('-') || ''
 
-            org.textContent = target_data[0].as_org || ''
+            org.textContent = Array.from(new Set(target_data.filter(item=>item.as_org).map(item=>item.as_org))).join(',')
+
+            icpnumber.textContent = target_data[0].number || ''
+
 
             protocol.textContent = Array.from(new Set(target_data.filter(item=>item.protocol).map(item=>item.protocol))).join(',')
 
             port.textContent = Array.from(new Set(target_data.filter(item=>item.port).map(item=>item.port))).join(',')
 
             surplus.textContent = data.rest_quota.split('：')[1] || ''
+
 
             port.style.wordWrap = 'break-word'
             port.style.wordBreak = 'normal'
