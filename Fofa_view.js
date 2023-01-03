@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FOFA view
 // @namespace    http://tampermonkey.net/
-// @version      0.4.0
+// @version      0.4.1
 // @description  Send the current website to FOFA
 // @author       0cat
 // @match        http://*/*
@@ -47,6 +47,10 @@ div.innerHTML = `<div style="font-size:14px;color:rgba(0,0,0,0.65);box-shadow: 0
           <div style="margin-bottom: 4px;display: flex">
             <div style="margin-right: 6px;white-space: nowrap">运营商和org:</div>
             <div class="org_fofa" style="word-wrap:break-word;word-break:normal;overflow: hidden;">null</div>
+          </div>
+          <div style="margin-bottom: 4px;display: flex">
+            <div style="margin-right: 6px;white-space: nowrap">ICP:</div>
+            <div class="icp_fofa" style="word-wrap:break-word;word-break:normal;overflow: hidden;">null</div>
           </div>
           <div style="margin-bottom: 4px;display: flex">
             <div style="margin-right: 6px;white-space: nowrap">协议:</div>
@@ -98,7 +102,7 @@ body.appendChild(div)
     var FofaKey = GM_getValue("FofaKey");
     var url
     var search
-    var Fofa_url = "https://fofa.info/api/v1/search/all?email="+ username + "&key=" + FofaKey + "&fields=country,province,city,isp,as_organization,ip,title,protocol,port,host,server&qbase64="
+    var Fofa_url = "https://fofa.info/api/v1/search/all?email="+ username + "&key=" + FofaKey + "&fields=country,province,city,isp,as_organization,ip,title,protocol,port,host,server,icp&qbase64="
     var target = window.location.hostname // 获取域名或者ip
     var isValidIP_reg=/(\d{1,3}\.){3}\d{1,3}/ 
     var messaage = {}
@@ -129,6 +133,7 @@ body.appendChild(div)
 
             const area = document.getElementsByClassName('area_fofa')[0]
             const org = document.getElementsByClassName('org_fofa')[0]
+            const org = document.getElementsByClassName('icp_fofa')[0]
             const protocol = document.getElementsByClassName('protocol_fofa')[0]
             const port = document.getElementsByClassName('port_fofa')[0]
 
@@ -199,6 +204,8 @@ body.appendChild(div)
             area.textContent = [target_location[0] || '',target_location[1] || '',target_location[2] || ''].filter(item=>item).join('-') || ''
 
             org.textContent = [target_location[3] || '',target_location[4] || ''].filter(item=>item).join(',') || ''
+            
+            icp.textContent =Array.from(new Set(target_data.filter(item=>item[11]).map(item=>item[11]))).join(',')
 
             protocol.textContent = Array.from(new Set(target_data.filter(item=>item[7]).map(item=>item[7]))).join(',')
 
@@ -224,6 +231,11 @@ body.appendChild(div)
             org.style.wordBreak = 'normal'
             org.style.overflow = 'hidden'
             org.style.width = '350px'
+            
+            icp.style.wordWrap = 'break-word'
+            icp.style.wordBreak = 'normal'
+            icp.style.overflow = 'hidden'
+            icp.style.width = '350px'
         }
     });
 }
